@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="no-js">
+<!--
+  ═══════════════════════════════════════════════════════════════════
+   دعوة زفاف · Wedding Invitation
+   Single-file site — ready for GitHub Pages (keep the name index.html).
+
+   HOW TO CUSTOMIZE — search this file for "✏️ EDIT":
+     1/3  In <head>  : the <title> + the WhatsApp link-preview text (Open Graph)
+     2/3  CONFIG     : wedding date/time, WhatsApp number, Google Maps link
+     3/3  I18N       : every visible word (names, venue, verse…) in Arabic & English
+
+   Fonts load from Google Fonts; everything else is self-contained.
+  ═══════════════════════════════════════════════════════════════════
+-->
+<head>
+  <meta charset="utf-8">
+  <script>document.documentElement.className = 'js';</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ✏️ EDIT 1/3 — Title + link preview (this is what WhatsApp shows when the link is shared) -->
+  <title>دعوة زفاف محمد و نورا | Mohamed &amp; Noura</title>
+  <meta name="description" content="نتشرف بدعوتكم لحضور حفل زفافنا — السبت ١٨ يوليو ٢٠٢٦ · قاعة روتانا بالاس، ديرب نجم، الشرقية">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="دعوة زفاف محمد و نورا 🤍 Mohamed & Noura">
+  <meta property="og:description" content="نتشرف بدعوتكم لحضور حفل زفافنا — السبت ١٨ يوليو ٢٠٢٦ · قاعة روتانا بالاس، ديرب نجم، الشرقية">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:url" content="https://ahmed-waheed1.github.io/wedding-invite/">
+  <!-- Optional but recommended: a photo makes the WhatsApp preview much richer.
+       Host a 1200×630 JPG next to this file, then uncomment:
+  <meta property="og:image" content="https://ahmed-waheed1.github.io/wedding-invite/preview.jpg">
+  -->
+  <meta name="twitter:card" content="summary">
+
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#FAF7F0">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='38' cy='54' r='26' fill='none' stroke='%23B08D3E' stroke-width='7'/%3E%3Ccircle cx='62' cy='46' r='26' fill='none' stroke='%23C9A45C' stroke-width='7'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Base ─────────────────────────────────────────────── */
+    *, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; color-scheme: light; }
+
+    :root {
+      --cream:     #FAF7F0;
+      --cream-2:   #F4EDDF;
+      --card:      #FFFDF8;
+      --ink:       #43382A;
+      --ink-soft:  #7A6A50;
+      --gold:      #B08D3E;
+      --gold-deep: #8C6D2F;
+      --gold-pale: #D9C08A;
+      --line:      rgba(176, 141, 62, .40);
+      --line-soft: rgba(176, 141, 62, .22);
+    }
+
+    body {
+      background:
+        radial-gradient(120% 55% at 50% 0%,   rgba(201, 164, 92, .11), transparent 60%),
+        radial-gradient(110% 45% at 50% 100%, rgba(201, 164, 92, .07), transparent 60%),
+        var(--cream);
+      color: var(--ink);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: clip;
+      -webkit-tap-highlight-color: transparent;
+      transition: opacity .18s ease;
+    }
+    body.fading { opacity: 0; }
+
+    /* Language ⇄ font pairing */
+    html[lang="ar"] body { font-family: 'Amiri', 'Traditional Arabic', serif; }
+    html[lang="en"] body { font-family: 'Playfair Display', 'Georgia', serif; }
+
+    a { color: inherit; }
+    svg { display: block; }
+    h1, h2 { line-height: 1.4; font-weight: 700; }
+    html[lang="en"] h2 { font-weight: 600; }
+    ::selection { background: var(--gold-pale); color: var(--ink); }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 3px; border-radius: 4px; }
+
+    .wrap { max-width: 660px; margin-inline: auto; padding-inline: 1.4rem; text-align: center; }
+
+    /* ── Language toggle ──────────────────────────────────── */
+    #langToggle {
+      position: fixed; top: .9rem; inset-inline-end: .9rem; z-index: 60;
+      display: flex; align-items: center; gap: 2px; padding: 4px;
+      background: rgba(250, 247, 240, .85);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border: 1px solid var(--line); border-radius: 999px;
+      box-shadow: 0 8px 20px -12px rgba(140, 109, 47, .5);
+      color: var(--ink-soft); font-size: .85rem; cursor: pointer;
+    }
+    .seg { padding: .3rem .72rem; border-radius: 999px; line-height: 1.2; transition: background .25s, color .25s; }
+    .seg-ar { font-family: 'Amiri', serif; font-size: 1.02rem; }
+    .seg-en { font-family: 'Playfair Display', serif; letter-spacing: .05em; }
+    html[lang="ar"] .seg-ar, html[lang="en"] .seg-en { background: var(--gold); color: #FFFDF6; }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh; min-height: 100svh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 4.5rem 1.5rem 5.5rem;
+    }
+    .corner { position: absolute; width: 54px; height: 54px; color: var(--gold); opacity: .55; pointer-events: none; }
+    .c-tl { top: 12px; left: 12px; }
+    .c-tr { top: 12px; right: 12px; transform: scaleX(-1); }
+    .c-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+    .c-br { bottom: 12px; right: 12px; transform: scale(-1); }
+
+    .verse { max-width: 34rem; font-size: 1.02rem; line-height: 2.2; color: var(--ink-soft); margin-bottom: 1.5rem; }
+    html[lang="en"] .verse { font-style: italic; font-size: .95rem; line-height: 1.9; }
+
+    .orn { width: 200px; height: 22px; margin-inline: auto; }
+    .hero .orn { margin-block: .4rem; }
+
+    .eyebrow { margin: 1.6rem 0 .4rem; font-size: 1.05rem; font-weight: 700; color: var(--gold-deep); }
+    html[lang="en"] .eyebrow { font-size: .8rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; }
+
+    .names {
+      font-size: clamp(2.7rem, 13vw, 4.8rem);
+      line-height: 1.45; margin: .1rem 0 .9rem;
+      color: var(--gold-deep); overflow-wrap: break-word;
+    }
+    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+      .names {
+        background: linear-gradient(150deg, #CBA75E 10%, #A8863B 55%, #8A6B2E 100%);
+        -webkit-background-clip: text; background-clip: text;
+        color: transparent; -webkit-text-fill-color: transparent;
+      }
+    }
+    .names .amp { font-size: .5em; font-weight: 400; opacity: .85; margin-inline: .15em; }
+    html[lang="en"] .names { letter-spacing: .02em; }
+    html[lang="en"] .names .amp { font-style: italic; }
+
+    .hero-date { font-size: 1.32rem; font-weight: 700; margin-top: 1.4rem; }
+    .hero-time { font-size: 1.05rem; color: var(--ink-soft); margin-top: .15rem; }
+
+    .scroll-hint { position: absolute; bottom: 1.3rem; left: 50%; transform: translateX(-50%); color: var(--gold-deep); opacity: .8; padding: .5rem; }
+    .scroll-hint svg { width: 26px; height: 26px; animation: bob 2.2s ease-in-out infinite; }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+
+    /* ── Greeting ─────────────────────────────────────────── */
+    .greeting { padding-block: 4.5rem 0; }
+    .greet-title { color: var(--ink); }
+    html[lang="ar"] .greet-title { font-family: 'Aref Ruqaa', 'Amiri', serif; font-size: clamp(1.9rem, 8vw, 2.6rem); line-height: 2; }
+    html[lang="en"] .greet-title { font-family: 'Great Vibes', cursive; font-size: clamp(2.3rem, 9.5vw, 3.1rem); font-weight: 400; line-height: 1.5; }
+    .greet-text { max-width: 30rem; margin: 1.1rem auto 0; color: var(--ink-soft); font-size: 1.02rem; line-height: 2.1; }
+    html[lang="en"] .greet-text { line-height: 1.9; }
+
+    /* ── Section headings ─────────────────────────────────── */
+    .section-head .orn-sm { width: 150px; height: 16px; margin-inline: auto; opacity: .85; }
+    .section-head h2 { margin-top: .9rem; font-size: 1.62rem; }
+
+    /* ── Countdown ────────────────────────────────────────── */
+    .countdown { padding-block: 4.5rem 3.2rem; }
+    .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 2rem; }
+    .tile {
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+      padding: 1rem .25rem .8rem;
+      box-shadow: 0 12px 28px -22px rgba(140, 109, 47, .4);
+    }
+    .tile .num { display: block; font-size: clamp(1.75rem, 8vw, 2.5rem); font-weight: 700; color: var(--gold-deep); line-height: 1.35; font-variant-numeric: tabular-nums; }
+    .tile .lbl { display: block; font-size: .85rem; color: var(--ink-soft); margin-top: .1rem; }
+    html[lang="en"] .tile .lbl { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; }
+    #doneMsg { display: none; margin-top: 2rem; font-size: 1.25rem; font-weight: 700; color: var(--gold-deep); }
+
+    /* ── Details card ─────────────────────────────────────── */
+    .details { padding-block: 3.2rem 4.5rem; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+      padding: 1.9rem 1.5rem; margin-top: 2.1rem; text-align: start;
+      box-shadow: 0 24px 48px -30px rgba(140, 109, 47, .4);
+    }
+    .row { display: flex; align-items: center; gap: 1rem; padding-block: 1.05rem; }
+    .row + .row { border-top: 1px solid var(--line-soft); }
+    .row > svg { flex: none; width: 26px; height: 26px; color: var(--gold); }
+    .row .lbl { font-size: .8rem; color: var(--ink-soft); line-height: 1.5; }
+    html[lang="en"] .row .lbl { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; }
+    .row .val { font-size: 1.08rem; font-weight: 700; line-height: 1.6; }
+
+    .card-actions { display: grid; gap: .7rem; margin-top: 1.4rem; }
+    @media (min-width: 520px) { .card-actions { grid-template-columns: 1fr 1fr; } }
+
+    /* ── Buttons ──────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+      min-height: 48px; padding: .75rem 1.4rem;
+      border: 1px solid var(--gold); border-radius: 999px;
+      color: var(--gold-deep); background: transparent;
+      font-family: inherit; font-size: .98rem; font-weight: 700; text-decoration: none;
+      transition: background .25s, color .25s, transform .15s, box-shadow .25s;
+    }
+    .btn:hover { background: var(--gold); color: #FFFDF6; }
+    .btn:active { transform: scale(.98); }
+    .btn svg { width: 19px; height: 19px; flex: none; }
+
+    .btn-solid {
+      background: linear-gradient(135deg, #C9A45C, #A8863B);
+      border-color: transparent; color: #FFFDF6;
+      padding: .95rem 2.2rem; font-size: 1.05rem;
+      box-shadow: 0 14px 30px -14px rgba(140, 109, 47, .55);
+    }
+    .btn-solid:hover { background: linear-gradient(135deg, #C9A45C, #96772F); transform: translateY(-2px); box-shadow: 0 18px 34px -14px rgba(140, 109, 47, .6); }
+
+    /* ── RSVP band ────────────────────────────────────────── */
+    .rsvp {
+      padding-block: 4rem;
+      background: linear-gradient(180deg, rgba(201, 164, 92, .13), rgba(201, 164, 92, .04));
+      border-block: 1px solid var(--line-soft);
+    }
+    .rsvp-text { max-width: 27rem; margin: 1rem auto 1.9rem; color: var(--ink-soft); }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    footer { padding: 3.5rem 1.4rem 4.2rem; text-align: center; }
+    footer .heart { width: 20px; height: 20px; margin: 0 auto .6rem; color: var(--gold); }
+    .f-names { font-size: 1.45rem; font-weight: 700; color: var(--gold-deep); }
+    .f-note { font-size: .95rem; color: var(--ink-soft); margin-top: .4rem; }
+    .f-date { font-size: .88rem; color: var(--gold); margin-top: 1.1rem; }
+    html[lang="en"] .f-date { letter-spacing: .35em; }
+
+    /* ── Reveal-on-scroll ─────────────────────────────────── */
+    html.js .reveal {
+      opacity: 0; transform: translateY(26px);
+      transition: opacity .9s cubic-bezier(.2, .6, .2, 1), transform .9s cubic-bezier(.2, .6, .2, 1);
+      transition-delay: var(--d, 0s);
+    }
+    html.js .reveal.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      html.js .reveal { opacity: 1; transform: none; transition: none; }
+      .scroll-hint svg { animation: none; }
+      body { transition: none; }
+    }
+
+    /* No-JS fallback: hide the bits that need scripting */
+    html.no-js #langToggle, html.no-js #countdown { display: none; }
+
+    /* ── Larger screens ───────────────────────────────────── */
+    @media (min-width: 600px) {
+      .corner { width: 72px; height: 72px; }
+      .c-tl, .c-tr { top: 20px; } .c-bl, .c-br { bottom: 20px; }
+      .c-tl, .c-bl { left: 20px; } .c-tr, .c-br { right: 20px; }
+      .verse { font-size: 1.1rem; }
+      .orn { width: 230px; }
+      .tiles { gap: 14px; }
+      .tile { padding: 1.3rem .5rem 1.05rem; }
+      .card { padding: 2.3rem 2.4rem; }
+      .hero-date { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Reusable SVG ornaments (drawn here, no image files) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="fadeIn" x1="8" y1="12" x2="88" y2="12" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#B08D3E" stop-opacity="0"/>
+        <stop offset="1" stop-color="#B08D3E" stop-opacity=".9"/>
+      </linearGradient>
+      <linearGradient id="fadeOut" x1="132" y1="12" x2="212" y2="12" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#B08D3E" stop-opacity=".9"/>
+        <stop offset="1" stop-color="#B08D3E" stop-opacity="0"/>
+      </linearGradient>
+
+      <!-- divider: line · dot ◇ dot · line -->
+      <symbol id="i-orn" viewBox="0 0 220 24">
+        <line x1="8" y1="12" x2="88" y2="12" stroke="url(#fadeIn)" stroke-width="1"/>
+        <line x1="132" y1="12" x2="212" y2="12" stroke="url(#fadeOut)" stroke-width="1"/>
+        <rect x="104.5" y="6.5" width="11" height="11" transform="rotate(45 110 12)" fill="none" stroke="#B08D3E" stroke-width="1"/>
+        <circle cx="110" cy="12" r="1.6" fill="#B08D3E"/>
+        <circle cx="96"  cy="12" r="1.7" fill="#B08D3E"/>
+        <circle cx="124" cy="12" r="1.7" fill="#B08D3E"/>
+      </symbol>
+
+      <!-- hero corner flourish -->
+      <symbol id="i-corner" viewBox="0 0 64 64">
+        <g fill="none" stroke="currentColor">
+          <path d="M62 8 H28 Q8 8 8 28 V62" stroke-width="1.5"/>
+          <path d="M62 15 H30.5 Q15 15 15 30.5 V62" stroke-width="1" opacity=".5"/>
+        </g>
+        <rect x="3" y="3" width="7" height="7" transform="rotate(45 6.5 6.5)" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="62" cy="8" r="1.8" fill="currentColor"/>
+        <circle cx="8" cy="62" r="1.8" fill="currentColor"/>
+      </symbol>
+
+      <!-- icons -->
+      <symbol id="i-cal" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4.5" width="18" height="17" rx="2.5"/>
+          <path d="M3 9.5h18M8 2.5v4M16 2.5v4"/>
+        </g>
+      </symbol>
+      <symbol id="i-cal-plus" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4.5" width="18" height="17" rx="2.5"/>
+          <path d="M3 9.5h18M8 2.5v4M16 2.5v4M12 12.8v5M9.5 15.3h5"/>
+        </g>
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7.5V12l3 2.5"/>
+        </g>
+      </symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21.5s-7.5-5.6-7.5-11.4a7.5 7.5 0 0 1 15 0C19.5 15.9 12 21.5 12 21.5Z"/>
+          <circle cx="12" cy="10" r="2.6"/>
+        </g>
+      </symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24">
+        <path d="M5 9.5l7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24">
+        <path d="M12 20.3C5.4 15.9 2.5 12.4 2.5 8.9 2.5 6 4.7 4 7.3 4c1.8 0 3.5.9 4.7 2.6C13.2 4.9 14.9 4 16.7 4c2.6 0 4.8 2 4.8 4.9 0 3.5-2.9 7-9.5 11.4Z" fill="currentColor"/>
+      </symbol>
+      <symbol id="i-wa" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Language toggle -->
+  <button id="langToggle" type="button" aria-label="Switch to English">
+    <span class="seg seg-ar" aria-hidden="true">ع</span>
+    <span class="seg seg-en" aria-hidden="true">EN</span>
+  </button>
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <header class="hero">
+    <svg class="corner c-tl" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-corner"/></svg>
+    <svg class="corner c-tr" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-corner"/></svg>
+    <svg class="corner c-bl" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-corner"/></svg>
+    <svg class="corner c-br" viewBox="0 0 64 64" aria-hidden="true"><use href="#i-corner"/></svg>
+
+    <p class="verse reveal" style="--d:.05s" data-t="verse">﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾</p>
+    <svg class="orn reveal" style="--d:.16s" viewBox="0 0 220 24" aria-hidden="true"><use href="#i-orn"/></svg>
+    <p class="eyebrow reveal" style="--d:.26s" data-t="eyebrow">دعوة حفل زفاف</p>
+    <h1 class="names reveal" style="--d:.36s"><span data-t="groom">محمد</span> <span class="amp" data-t="amp">و</span> <span data-t="bride">نورا</span></h1>
+    <svg class="orn reveal" style="--d:.46s" viewBox="0 0 220 24" aria-hidden="true"><use href="#i-orn"/></svg>
+    <p class="hero-date reveal" style="--d:.56s" data-t="dateLine">السبت ١٨ يوليو ٢٠٢٦</p>
+    <p class="hero-time reveal" style="--d:.64s" data-t="timeLine">في تمام السابعة مساءً</p>
+
+    <a class="scroll-hint" href="#greeting" aria-label="للأسفل · scroll down">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chev"/></svg>
+    </a>
+  </header>
+
+  <main>
+    <!-- ── Greeting ─────────────────────────────────────────── -->
+    <section class="greeting wrap" id="greeting">
+      <h2 class="greet-title reveal" data-t="greetTitle">إلى أهلنا وأحبابنا</h2>
+      <p class="greet-text reveal" style="--d:.1s" data-t="greetText">في هذا اليوم الجميل، يسعدنا أن نشارككم أجمل اللحظات وأصدق الابتسامات من حكاية حبّنا.</p>
+    </section>
+
+    <!-- ── Countdown ────────────────────────────────────────── -->
+    <section class="countdown wrap" id="countdown">
+      <div class="section-head reveal">
+        <svg class="orn-sm" viewBox="0 0 220 24" aria-hidden="true"><use href="#i-orn"/></svg>
+        <h2 data-t="countTitle">باقي على يوم الفرح</h2>
+      </div>
+      <div class="tiles" id="tiles">
+        <div class="tile reveal" style="--d:.05s"><span class="num" id="cd-d">--</span><span class="lbl" data-t="dLbl">يوم</span></div>
+        <div class="tile reveal" style="--d:.12s"><span class="num" id="cd-h">--</span><span class="lbl" data-t="hLbl">ساعة</span></div>
+        <div class="tile reveal" style="--d:.19s"><span class="num" id="cd-m">--</span><span class="lbl" data-t="mLbl">دقيقة</span></div>
+        <div class="tile reveal" style="--d:.26s"><span class="num" id="cd-s">--</span><span class="lbl" data-t="sLbl">ثانية</span></div>
+      </div>
+      <p id="doneMsg" data-t="doneMsg">اليوم يوم الفرح — نلقاكم هناك! 🤍</p>
+    </section>
+
+    <!-- ── Event details ────────────────────────────────────── -->
+    <section class="details wrap" id="details">
+      <div class="section-head reveal">
+        <svg class="orn-sm" viewBox="0 0 220 24" aria-hidden="true"><use href="#i-orn"/></svg>
+        <h2 data-t="detailsTitle">تفاصيل الحفل</h2>
+      </div>
+      <div class="card reveal" style="--d:.08s">
+        <div class="row">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cal"/></svg>
+          <div>
+            <div class="lbl" data-t="dateLbl">التاريخ</div>
+            <div class="val" data-t="dateVal">السبت ١٨ يوليو ٢٠٢٦</div>
+          </div>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>
+          <div>
+            <div class="lbl" data-t="timeLbl">التوقيت</div>
+            <div class="val" data-t="timeVal">٧:٠٠ مساءً</div>
+          </div>
+        </div>
+        <div class="row">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>
+          <div>
+            <div class="lbl" data-t="venueLbl">المكان</div>
+            <div class="val" data-t="venueVal">قاعة روتانا بالاس — ديرب نجم، الشرقية</div>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a id="mapsBtn" class="btn" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>
+            <span data-t="mapsBtn">افتح في خرائط جوجل</span>
+          </a>
+          <a id="calBtn" class="btn" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cal-plus"/></svg>
+            <span data-t="calBtn">أضِف إلى التقويم</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RSVP ─────────────────────────────────────────────── -->
+    <section class="rsvp" id="rsvp">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <svg class="orn-sm" viewBox="0 0 220 24" aria-hidden="true"><use href="#i-orn"/></svg>
+          <h2 data-t="rsvpTitle">شاركونا فرحتنا</h2>
+        </div>
+        <p class="rsvp-text reveal" style="--d:.08s" data-t="rsvpText">كلماتكم الطيبة تُسعدنا — أرسلوا تهنئتكم عبر واتساب.</p>
+        <a id="rsvpBtn" class="btn btn-solid reveal" style="--d:.16s" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>
+          <span data-t="rsvpBtn">أرسلوا التهنئة عبر واتساب</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer class="reveal">
+    <svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart"/></svg>
+    <p class="f-names" data-t="footNames">محمد و نورا</p>
+    <p class="f-note" data-t="footNote">بانتظار تشريفكم</p>
+    <p class="f-date" data-t="footDate">١٨ / ٠٧ / ٢٠٢٦</p>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ✏️ EDIT 2/3 — Event settings */
+    const CONFIG = {
+      // Wedding date & time WITH timezone offset.
+      // Cairo is UTC+3 in July (daylight saving); use +02:00 for Nov–Apr dates.
+      weddingISO: '2026-07-18T19:00:00+03:00',
+      partyHours: 5,                    // event length used for the calendar entry
+      whatsapp: '201016994459',         // RSVP number — country code + number, DIGITS ONLY, no "+"
+      mapsUrl: 'https://maps.app.goo.gl/fBnxBxaEUmGhF7YDA'
+    };
+
+    /* ✏️ EDIT 3/3 — Every visible word, in both languages */
+    const I18N = {
+      docTitle:  { ar: 'دعوة زفاف محمد و نورا', en: 'Mohamed & Noura — Wedding Invitation' },
+      verse: {
+        ar: '﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ﴾',
+        en: '“And of His signs is that He created for you spouses from among yourselves so that you may find tranquillity in them, and He placed between you affection and mercy.”'
+      },
+      eyebrow:   { ar: 'دعوة حفل زفاف', en: 'Wedding Invitation' },
+      groom:     { ar: 'محمد', en: 'Mohamed' },
+      amp:       { ar: 'و',    en: '&' },
+      bride:     { ar: 'نورا', en: 'Noura' },
+      dateLine:  { ar: 'السبت ١٨ يوليو ٢٠٢٦', en: 'Saturday, 18 July 2026' },
+      timeLine:  { ar: 'في تمام السابعة مساءً', en: 'At seven in the evening' },
+      greetTitle:{ ar: 'إلى أهلنا وأحبابنا', en: 'Dear Family and Friends' },
+      greetText: {
+        ar: 'في هذا اليوم الجميل، يسعدنا أن نشارككم أجمل اللحظات وأصدق الابتسامات من حكاية حبّنا.',
+        en: 'On this beautiful day, we want to share with you the bright moments and sincere smiles of our love story.'
+      },
+      countTitle:{ ar: 'باقي على يوم الفرح', en: 'Counting Down to the Big Day' },
+      dLbl: { ar: 'يوم',   en: 'Days' },
+      hLbl: { ar: 'ساعة',  en: 'Hours' },
+      mLbl: { ar: 'دقيقة', en: 'Minutes' },
+      sLbl: { ar: 'ثانية', en: 'Seconds' },
+      doneMsg:   { ar: 'اليوم يوم الفرح — نلقاكم هناك! 🤍', en: 'It’s the big day — see you there! 🤍' },
+      detailsTitle: { ar: 'تفاصيل الحفل', en: 'Event Details' },
+      dateLbl:   { ar: 'التاريخ', en: 'Date' },
+      timeLbl:   { ar: 'التوقيت', en: 'Time' },
+      venueLbl:  { ar: 'المكان',  en: 'Venue' },
+      dateVal:   { ar: 'السبت ١٨ يوليو ٢٠٢٦', en: 'Saturday, 18 July 2026' },
+      timeVal:   { ar: '٧:٠٠ مساءً', en: '7:00 PM' },
+      venueVal:  { ar: 'قاعة روتانا بالاس — ديرب نجم، الشرقية', en: 'Rotana Palace Hall — Diyarb Negm, Sharqia' },
+      mapsBtn:   { ar: 'افتح في خرائط جوجل', en: 'Open in Google Maps' },
+      calBtn:    { ar: 'أضِف إلى التقويم', en: 'Add to Calendar' },
+      rsvpTitle: { ar: 'شاركونا فرحتنا', en: 'Share Our Joy' },
+      rsvpText:  { ar: 'كلماتكم الطيبة تُسعدنا — أرسلوا تهنئتكم عبر واتساب.', en: 'Your kind words mean the world to us — send us your wishes on WhatsApp.' },
+      rsvpBtn:   { ar: 'أرسلوا التهنئة عبر واتساب', en: 'Send Wishes on WhatsApp' },
+      footNames: { ar: 'محمد و نورا', en: 'Mohamed & Noura' },
+      footNote:  { ar: 'بانتظار تشريفكم', en: 'We can’t wait to celebrate with you' },
+      footDate:  { ar: '١٨ / ٠٧ / ٢٠٢٦', en: '18 · 07 · 2026' },
+      waMessage: {
+        ar: 'ألف مبروك لمحمد و نورا! 🤍\nبارك الله لكما وجمع بينكما في خير، وكل الأمنيات بحياة سعيدة مليئة بالفرح.',
+        en: 'Congratulations Mohamed & Noura! 🤍\nWishing you a lifetime of love, joy and happiness together.'
+      },
+      calTitle:   { ar: 'حفل زفاف محمد و نورا', en: 'Mohamed & Noura’s Wedding' },
+      calDetails: { ar: 'نتشرف بدعوتكم لمشاركتنا حفل زفافنا.', en: 'We would be honored by your presence at our wedding.' },
+      calLocation:{ ar: 'قاعة روتانا بالاس، ديرب نجم، الشرقية', en: 'Rotana Palace Hall, Diyarb Negm, Al-Sharqia' }
+    };
+
+    /* ── No edits needed below this line ──────────────────── */
+    const docEl = document.documentElement;
+    let lang = 'ar';
+    try {
+      const saved = localStorage.getItem('invite-lang');
+      if (saved === 'en' || saved === 'ar') lang = saved;
+    } catch (e) { /* storage unavailable — stay on Arabic */ }
+
+    const start = new Date(CONFIG.weddingISO);
+    const end = new Date(start.getTime() + CONFIG.partyHours * 36e5);
+    const AR_DIGITS = '٠١٢٣٤٥٦٧٨٩';
+
+    const t = (k) => I18N[k][lang];
+    const two = (n) => {
+      let s = String(n);
+      if (s.length < 2) s = '0' + s;
+      return lang === 'ar' ? s.replace(/\d/g, (d) => AR_DIGITS[+d]) : s;
+    };
+    const gDate = (d) => d.toISOString().replace(/[-:]|\.\d{3}/g, '');
+
+    function buildLinks() {
+      document.getElementById('mapsBtn').href = CONFIG.mapsUrl;
+      document.getElementById('rsvpBtn').href =
+        'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(t('waMessage'));
+      document.getElementById('calBtn').href =
+        'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+        '&text=' + encodeURIComponent(t('calTitle')) +
+        '&dates=' + gDate(start) + '/' + gDate(end) +
+        '&details=' + encodeURIComponent(t('calDetails') + '\n' + CONFIG.mapsUrl) +
+        '&location=' + encodeURIComponent(t('calLocation'));
+    }
+
+    const tilesEl = document.getElementById('tiles');
+    const doneEl = document.getElementById('doneMsg');
+    const num = {
+      d: document.getElementById('cd-d'),
+      h: document.getElementById('cd-h'),
+      m: document.getElementById('cd-m'),
+      s: document.getElementById('cd-s')
+    };
+    let timer;
+
+    function tick() {
+      const diff = start.getTime() - Date.now();
+      if (diff <= 0) {
+        tilesEl.style.display = 'none';
+        doneEl.style.display = 'block';
+        if (timer) clearInterval(timer);
+        return;
+      }
+      num.d.textContent = two(Math.floor(diff / 864e5));
+      num.h.textContent = two(Math.floor(diff / 36e5) % 24);
+      num.m.textContent = two(Math.floor(diff / 6e4) % 60);
+      num.s.textContent = two(Math.floor(diff / 1e3) % 60);
+    }
+
+    const toggleBtn = document.getElementById('langToggle');
+
+    function apply() {
+      docEl.lang = lang;
+      docEl.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.querySelectorAll('[data-t]').forEach((el) => {
+        const k = el.getAttribute('data-t');
+        if (I18N[k]) el.textContent = I18N[k][lang];
+      });
+      document.title = t('docTitle');
+      toggleBtn.setAttribute('aria-label', lang === 'ar' ? 'Switch to English' : 'التبديل إلى اللغة العربية');
+      buildLinks();
+      tick();
+      try { localStorage.setItem('invite-lang', lang); } catch (e) { /* ignore */ }
+    }
+
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    toggleBtn.addEventListener('click', () => {
+      const next = lang === 'ar' ? 'en' : 'ar';
+      if (reduceMotion) { lang = next; apply(); return; }
+      document.body.classList.add('fading');
+      setTimeout(() => {
+        lang = next;
+        apply();
+        requestAnimationFrame(() => document.body.classList.remove('fading'));
+      }, 190);
+    });
+
+    // Reveal-on-scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      revealEls.forEach((el) => io.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('in'));
+    }
+
+    apply();
+    timer = setInterval(tick, 1000);
+  })();
+  </script>
+</body>
+</html>
